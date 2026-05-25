@@ -174,8 +174,8 @@ Upon completion of the build process expect such an output on the console with b
 ```bash
 2026-04-09T15:10:22.705+0530    INFO    display/display.go:21   Checking for image artifacts in: /home/intel/rranjan3/ict/workspace/ubuntu-ubuntu24-x86_64/imagebuild/minimal
 2026-04-09T15:10:22.705+0530    INFO    display/display.go:30   Found 2 total entries in directory
-2026-04-09T15:10:22.705+0530    INFO    display/display.go:36   Checking file: minimal-desktop-ubuntu-ptl-24.04.raw.gz (isDir=false)
-2026-04-09T15:10:22.705+0530    INFO    display/display.go:36   Checking file: spdx_manifest_deb_minimal-desktop-ubuntu-ptl_20260409_150520.json (isDir=false)
+2026-04-09T15:10:22.705+0530    INFO    display/display.go:36   Checking file: minimal-desktop-ubuntu-24.04.raw.gz (isDir=false)
+2026-04-09T15:10:22.705+0530    INFO    display/display.go:36   Checking file: spdx_manifest_deb_minimal-desktop-ubuntu_20260409_150520.json (isDir=false)
 2026-04-09T15:10:22.706+0530    INFO    display/display.go:44   Found 2 artifacts after filtering
 2026-04-09T15:10:22.706+0530    INFO    display/display.go:52
 2026-04-09T15:10:22.706+0530    INFO    display/display.go:53   ╔════════════════════════════════════════════════════════════════════════════╗
@@ -185,11 +185,11 @@ Upon completion of the build process expect such an output on the console with b
 2026-04-09T15:10:22.706+0530    INFO    display/display.go:59     Image Type:   RAW
 2026-04-09T15:10:22.706+0530    INFO    display/display.go:60
 2026-04-09T15:10:22.706+0530    INFO    display/display.go:61     Generated Artifacts (including SBOM):
-2026-04-09T15:10:22.706+0530    INFO    display/display.go:79       • minimal-desktop-ubuntu-ptl-24.04.raw.gz (2.62 GB)
-2026-04-09T15:10:22.706+0530    INFO    display/display.go:80         /home/intel/rranjan3/ict/workspace/ubuntu-ubuntu24-x86_64/imagebuild/minimal/minimal-desktop-ubuntu-ptl-24.04.raw.gz
+2026-04-09T15:10:22.706+0530    INFO    display/display.go:79       • minimal-desktop-ubuntu-24.04.raw.gz (2.62 GB)
+2026-04-09T15:10:22.706+0530    INFO    display/display.go:80         /home/intel/rranjan3/ict/workspace/ubuntu-ubuntu24-x86_64/imagebuild/minimal/minimal-desktop-ubuntu-24.04.raw.gz
 2026-04-09T15:10:22.706+0530    INFO    display/display.go:81
-2026-04-09T15:10:22.706+0530    INFO    display/display.go:79       • spdx_manifest_deb_minimal-desktop-ubuntu-ptl_20260409_150520.json (1.37 MB)
-2026-04-09T15:10:22.706+0530    INFO    display/display.go:80         /home/intel/rranjan3/ict/workspace/ubuntu-ubuntu24-x86_64/imagebuild/minimal/spdx_manifest_deb_minimal-desktop-ubuntu-ptl_20260409_150520.json
+2026-04-09T15:10:22.706+0530    INFO    display/display.go:79       • spdx_manifest_deb_minimal-desktop-ubuntu_20260409_150520.json (1.37 MB)
+2026-04-09T15:10:22.706+0530    INFO    display/display.go:80         /home/intel/rranjan3/ict/workspace/ubuntu-ubuntu24-x86_64/imagebuild/minimal/spdx_manifest_deb_minimal-desktop-ubuntu_20260409_150520.json
 2026-04-09T15:10:22.706+0530    INFO    display/display.go:81
 2026-04-09T15:10:22.706+0530    INFO    display/display.go:84   ════════════════════════════════════════════════════════════════════════════
 2026-04-09T15:10:22.706+0530    INFO    display/display.go:85
@@ -220,21 +220,14 @@ Expected artefacts:
 
 | File | Description |
 |------|-------------|
-| `minimal-desktop-ubuntu-ptl.raw.gz` | Compressed raw disk image (ready to flash) |
+| `minimal-desktop-ubuntu.raw.gz` | Compressed raw disk image (ready to flash) |
 | `DB.cer` | Secure Boot certificate, if keys were configured |
 
 To flash the image to a target device (confirm device path before running):
 
 ```bash
-gunzip -c minimal-desktop-ubuntu-ptl.raw.gz | sudo dd of=/dev/sdX bs=4M status=progress && sync
+gunzip -c minimal-desktop-ubuntu.raw.gz | sudo dd of=/dev/sdX bs=4M status=progress && sync
 ```
 
 ## Troubleshoot
 
-1. Following error is seen when image build is triggered:
-
-  ```text
-  Error: pre-processing failed: failed to generate apt sources from repositories: failed to download and add GPG keys: failed to download GPG key from https://af01p-png.devtools.intel.com/artifactory/hspe-edge-png-local/ubuntu/keys/adl-hirsute-public.gpg: failed to fetch GPG key from https://af01p-png.devtools.intel.com/artifactory/hspe-edge-png-local/ubuntu/keys/adl-hirsute-public.gpg: Get "https://af01p-png.devtools.intel.com/artifactory/hspe-edge-png-local/ubuntu/keys/adl-hirsute-public.gpg": tls: failed to verify certificate: x509: certificate signed by unknown authority
-  ```
-
-  Solution: Ideally these repositories are not expected to be used. However, if this is a development environment, add `.devtools.intel.com` to `no_proxy` and rerun.

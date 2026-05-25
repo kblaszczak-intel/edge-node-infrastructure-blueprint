@@ -8,7 +8,7 @@ SPDX-License-Identifier: Apache-2.0
 
 ## Platform Overview
 This repository enables repeatable edge infrastructure bring-up for Intel-based systems, with a focus on host OS image generation, provisioning readiness, and follow-on runtime enablement.
-- Build Ubuntu-based host images for Intel PTL and similar targets.
+- Build Ubuntu-based host images for Intel harwares.
 - Prepare artifacts for deployment, validation, and benchmarking workflows.
 - Standardize team and customer interactions through reusable agent skills.
 
@@ -49,7 +49,7 @@ Do not skip preconditions or validation.
 
 ## Quick Tryout Prompts
 Use these prompts to test agent-driven development before writing your own skills:
-1. `Use the create-image skill to build an Ubuntu 24.04 PTL image from infrastructure/host-os/ict/generic-handheld-os-template.yml. Ask me for missing inputs first.`
+1. `Use the create-image skill to build an Ubuntu 24.04 image from infrastructure/host-os/ict/generic-handheld-os-template.yml. Ask me for missing inputs first.`
 2. `Run only preconditions and template validation for create-image, do not start the build yet.`
 3. `Create a dry-run plan for create-image with commands and expected artifacts.`
 4. `Use create-usb-installation-files to produce usb-installation-files.tar.gz using an existing ICT image at /path/to/image.raw.gz. Run preconditions first.`

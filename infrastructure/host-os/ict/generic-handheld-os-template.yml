@@ -638,15 +638,13 @@ systemConfig:
     - cmd: "echo 'Acquire::ftp::Proxy \"http://proxy-dmz.intel.com:911\";' > /etc/apt/apt.conf.d/99proxy.conf"
     - cmd: "echo 'Acquire::http::Proxy \"http://proxy-dmz.intel.com:911\";' >> /etc/apt/apt.conf.d/99proxy.conf"
     - cmd: "echo 'Acquire::https::Proxy \"http://proxy-dmz.intel.com:911\";' >> /etc/apt/apt.conf.d/99proxy.conf"
-    - cmd: "echo 'Acquire::https::proxy::af01p-png.devtools.intel.com \"DIRECT\";' >> /etc/apt/apt.conf.d/99proxy.conf"
-    - cmd: "echo 'Acquire::https::proxy::ubit-artifactory-or.intel.com \"DIRECT\";' >> /etc/apt/apt.conf.d/99proxy.conf"
     - cmd: "echo 'Acquire::https::proxy::*.intel.com \"DIRECT\";' >> /etc/apt/apt.conf.d/99proxy.conf"
     # Set environment proxies
     - cmd: "echo 'http_proxy=http://proxy-dmz.intel.com:911' >> /etc/environment"
     - cmd: "echo 'https_proxy=http://proxy-dmz.intel.com:912' >> /etc/environment"
     - cmd: "echo 'ftp_proxy=http://proxy-dmz.intel.com:911' >> /etc/environment"
     - cmd: "echo 'socks_server=http://proxy-dmz.intel.com:1080' >> /etc/environment"
-    - cmd: "echo 'no_proxy=localhost,127.0.0.1,127.0.1.1,127.0.0.0/8,172.16.0.0/20,192.168.0.0/16,10.0.0.0/8,10.1.0.0/16,10.152.183.0/24,devtools.intel.com,jf.intel.com,teamcity-or.intel.com,caas.intel.com,inn.intel.com,isscorp.intel.com,gfx-assets.fm.intel.com' >> /etc/environment"
+    - cmd: "echo 'no_proxy=localhost,127.0.0.1,127.0.1.1,127.0.0.0/8,172.16.0.0/20,192.168.0.0/16,10.0.0.0/8,10.1.0.0/16,10.152.183.0/24,jf.intel.com,teamcity-or.intel.com,caas.intel.com,inn.intel.com,isscorp.intel.com,gfx-assets.fm.intel.com' >> /etc/environment"
     # Enable SSH service to start automatically on boot
     - cmd: "ln -sf /lib/systemd/system/ssh.service /etc/systemd/system/multi-user.target.wants/ssh.service"
     # Install Intel Graphics Compiler and compute runtime packages for PTL
