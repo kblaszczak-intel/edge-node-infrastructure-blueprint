@@ -19,7 +19,7 @@ This repository enables repeatable edge infrastructure bring-up for Intel-based 
 | examples | Starter examples for bring-up and tryout |
 
 ## Available Skills
-Skills are in `.claude/skills/`. Use trigger phrases to activate:
+Skills are in `skills/`. Use trigger phrases to activate:
 - `create-image`: Build Ubuntu 24.04 host images using ICT and validate output artifacts.
 - `create-usb-installation-files`: Create `usb-installation-files.tar.gz` end-to-end, optionally chaining `create-image` when an ICT image is not already available.
 - `validate-platform-config`: Validate post-provision platform readiness over SSH (k3s pods, binaries/path, cloud-init, network, proxy values, devices, GPU VFs).
