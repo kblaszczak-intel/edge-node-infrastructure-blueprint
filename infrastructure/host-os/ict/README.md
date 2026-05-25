@@ -9,7 +9,7 @@ This document describes how to build a bootable Ubuntu 24.04 raw image for
 Intel Panther Lake (PTL) platforms using
 [image-composer-tool](https://github.com/open-edge-platform/image-composer-tool)
 and the provided template
-[`ubuntu24-x86_64-minimal-ptl.yml`](./ubuntu24-x86_64-minimal-ptl.yml).
+[`generic-handheld-os-template.yml`](./generic-handheld-os-template.yml).
 
 ---
 
@@ -78,7 +78,7 @@ Copy the upstream template to a working location and edit it for your
 environment:
 
 ```bash
-cp <ENIB-HOME>/infrastructure/host-os/ict/ubuntu24-x86_64-minimal-ptl.yml my-ubuntu24-ptl.yml
+cp <ENIB-HOME>/infrastructure/host-os/ict/generic-handheld-os-template.yml my-ubuntu24.yml
 ```
 
 Here `ENIB-HOME` is the root directory of this project not the image-composer-tool.
@@ -150,7 +150,7 @@ Check the template for syntax and schema errors before starting a full
 build (fast, no root required):
 
 ```bash
-./image-composer-tool validate my-ubuntu24-ptl.yml
+./image-composer-tool validate my-ubuntu24.yml
 ```
 
 ---
@@ -162,7 +162,7 @@ and chroot environments. Pass `-E` to preserve your proxy and environment
 variables:
 
 ```bash
-sudo -E ./image-composer-tool build my-ubuntu24-ptl.yml
+sudo -E ./image-composer-tool build my-ubuntu24.yml
 ```
 
 ---

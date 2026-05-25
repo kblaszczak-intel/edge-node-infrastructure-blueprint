@@ -49,7 +49,7 @@ Do not skip preconditions or validation.
 
 ## Quick Tryout Prompts
 Use these prompts to test agent-driven development before writing your own skills:
-1. `Use the create-image skill to build an Ubuntu 24.04 PTL image from infrastructure/host-os/ict/ubuntu24-x86_64-minimal-ptl.yml. Ask me for missing inputs first.`
+1. `Use the create-image skill to build an Ubuntu 24.04 PTL image from infrastructure/host-os/ict/generic-handheld-os-template.yml. Ask me for missing inputs first.`
 2. `Run only preconditions and template validation for create-image, do not start the build yet.`
 3. `Create a dry-run plan for create-image with commands and expected artifacts.`
 4. `Use create-usb-installation-files to produce usb-installation-files.tar.gz using an existing ICT image at /path/to/image.raw.gz. Run preconditions first.`
